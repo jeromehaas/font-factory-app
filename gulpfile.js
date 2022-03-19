@@ -14,6 +14,13 @@ const eotTask = (done) => {
 	done();
 };
 
+const ttfTask = (done) => {
+	gulp.src('./src/*.ttf')
+		.pipe(gulp.dest('./dist'));
+	spinner.succeed('.ttf files generated!');
+	done();
+};
+
 const woffTask = (done) => {
 	gulp.src('./src/*.ttf')
 		.pipe(ttf2woff())
@@ -39,8 +46,8 @@ const cleanTask = (done) => {
 
 const buildTask = (done) => {
 	try {
-
 		cleanTask(done);	
+		ttfTask(done);
 		eotTask(done);
 		woffTask(done);
 		woff2Task(done);
@@ -52,6 +59,7 @@ const buildTask = (done) => {
 module.exports = {
 	default: buildTask,
 	eot: eotTask,
+	ttf: ttfTask,
 	woff: woffTask,
 	woff2: woff2Task,
 	clean: cleanTask

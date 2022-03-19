@@ -32,6 +32,9 @@ yarn run start
 npm run eot 
 # generates .eot files only
 
+npm run ttf
+# generates .ttf files only
+
 npm run woff
 # generates .woff files only
 
